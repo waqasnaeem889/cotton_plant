@@ -1,113 +1,106 @@
-import 'package:cotton_plant/model/dieases_model..dart';
-import 'package:cotton_plant/views/disease_detail_screen.dart';
-import 'package:cotton_plant/views/home_screen.dart';
-import 'package:cotton_plant/views/about_screen.dart';
+import 'package:cotton_plant/utils/contants.dart';
+import 'package:cotton_plant/views/landing_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class IntroPage extends StatefulWidget {
+class IntroScreen extends StatefulWidget {
+  const IntroScreen({super.key});
+
   @override
-  _IntroPageState createState() => _IntroPageState();
+  State<IntroScreen> createState() => _IntroScreenState();
 }
 
-class _IntroPageState extends State<IntroPage> {
-  int _selectedIndex = 0;
-
-  List<Widget> screens = [
-    HomePageScreen(),
-    AboutScreen(),
-  ]; // Track the selected index
-
+class _IntroScreenState extends State<IntroScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: screens[_selectedIndex],
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print('Scanner Button Pressed');
-        },
-        elevation: 0,
-        backgroundColor: Color(0xFF85C556),
-        child: ClipOval(
-          child: Container(
-            width: 30,
-            height: 35,
-            child: Image.asset(
-              "assets/images/scan.png",
-              fit: BoxFit.cover,
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Image.asset(
+              'assets/images/cotton.png',
+              // height: 509,
+              width: 509.w,
+              fit: BoxFit.fitWidth,
             ),
-          ),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        child: Container(
-          height: 56.0,
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              _buildIconButton(0, Icons.home),
-              //_buildIconButton(1, Icons.search),
-              SizedBox(width: 32.0),
-              _buildIconButton(2, Icons.info,
-                  iconSize:
-                      24.0), // Use your custom information icon image here
-              //_buildIconButton(3, Icons.person_outlined),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildIconButton(int index, dynamic icon, {double iconSize = 24.0}) {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        IconButton(
-          icon: Icon(
-            icon,
-            size: iconSize,
-            color: _selectedIndex == index ? Colors.green : Colors.grey,
-          ),
-          onPressed: () {
-            print('Button $index Pressed');
-            setState(() {
-              _selectedIndex = index;
-            });
-
-            // Perform navigation based on the selected index
-            switch (index) {
-              case 0:
-                // No need to navigate to the same page
-                break;
-              case 1:
-                setState(() {
-                  _selectedIndex = 0;
-                });
-                break;
-              case 2:
-                setState(() {
-                  _selectedIndex = 1; // Set the home icon as selected
-                });
-                break;
-            }
-          },
-        ),
-        if (_selectedIndex == index)
-          Positioned(
-            top: 0,
-            child: Container(
-              width: 7,
-              height: 8,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.green,
+            Expanded(
+              child: Container(
+                color: CustomColors.primary,
+                child: Column(
+                  children: [
+                    SizedBox(height: 30.h),
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Text(
+                        'Detect a disease &\nsave our cotton',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.openSans(
+                            textStyle: TextStyle(
+                          color: Color.fromARGB(255, 250, 245, 245),
+                          fontSize: 24.sp,
+                          //fontWeight: FontWeight.bold,
+                        )),
+                      ),
+                    ),
+                    SizedBox(height: 20.h),
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Text(
+                        'Detect a disease and help\nus to cure our cotton',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.openSans(
+                          textStyle: TextStyle(
+                            color: Color.fromARGB(255, 98, 240, 150),
+                            fontSize: 20.sp,
+                            // fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 60.h,
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: SizedBox(
+                        height: 50.h,
+                        width: 160.w,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LandingPage()),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Color.fromRGBO(64, 152, 12, 1),
+                            onPrimary: Colors.white,
+                            elevation: 8.0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.r),
+                            ),
+                          ),
+                          child: Text(
+                            'Get Started',
+                            style: GoogleFonts.openSans(
+                              textStyle: TextStyle(
+                                fontSize: 18.sp,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-      ],
+          ],
+        ),
+      ),
     );
   }
 }

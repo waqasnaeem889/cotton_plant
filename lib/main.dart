@@ -1,10 +1,23 @@
-import 'package:cotton_plant/views/intro_screen.dart';
-import 'package:cotton_plant/views/splash_screen.dart';
+import 'package:cotton_plant/utils/contants.dart';
+import 'package:cotton_plant/views/splash_display_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  //SystemChrome.setSystemUIOverlayStyle(defaultOverlay);
 
-void main() {
-  runApp(const MyApp());
+  runApp(ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return const MyApp();
+      }));
 }
 
 class MyApp extends StatelessWidget {
@@ -14,8 +27,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(),
-      home: SplashScreen(), // Set IntroPage as the home page
+      theme: ThemeData(
+        textTheme: GoogleFonts.openSansTextTheme(),
+        appBarTheme: AppBarTheme(
+          backgroundColor: CustomColors.primary,
+          titleSpacing: 0,
+          titleTextStyle: GoogleFonts.openSans(),
+          
+        )
+      ),
+      home: const  SplashScreen(), // Set IntroPage as the home page
     );
   }
 }
