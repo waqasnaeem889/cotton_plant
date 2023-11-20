@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void delay() async {
     await Future.delayed(
      const  Duration(
-        milliseconds: 3500,
+        milliseconds: 4000,
       ),
       () {
         Navigator.pushAndRemoveUntil(

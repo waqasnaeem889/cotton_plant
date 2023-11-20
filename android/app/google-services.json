@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "289965324801",
+    "project_id": "cottonplant-ee6ec",
+    "storage_bucket": "cottonplant-ee6ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:289965324801:android:6ac4050a28d0072ce69e00",
+        "android_client_info": {
+          "package_name": "com.example.cotton_plant"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEy1WPco1VadQkpvDtS_MO0rvMfgWoNi4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

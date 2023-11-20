@@ -1,7 +1,14 @@
+import 'dart:io';
+
 import 'package:cotton_plant/views/home_screen.dart';
 import 'package:cotton_plant/views/about_screen.dart';
+import 'package:cotton_plant/views/process_screen.dart';
+import 'package:cotton_plant/widgets/custom_dialogbox.dart';
+import 'package:cotton_plant/widgets/secondary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -14,7 +21,59 @@ class _LandingPageState extends State<LandingPage> {
   List<Widget> screens = [
     HomePageScreen(),
     AboutScreen(),
-  ]; // Track the selected index
+  ];
+
+  final ImagePicker picker = ImagePicker();
+  File? coverImage;
+
+  Future<dynamic> _handleImagePicker(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return CustomDialogBox(
+            height: 180.h,
+            title: 'Pick Image',
+            description: 'Choose anyone option',
+            action: Column(
+              children: [
+                SecondaryButton(
+                    title: 'Camera',
+                    width: 200.w,
+                    onTap: () async {
+                      final XFile? image =
+                          await picker.pickImage(source: ImageSource.camera);
+                      if (image != null) {
+                        setState(() {
+                          coverImage = File(image.path);
+                        });
+                        Navigator.of(context).pop();
+                        Get.to(() => ProcessScreen(coverImage: coverImage));
+                      } else {
+                        Navigator.of(context).pop();
+                      }
+                    }),
+                SizedBox(height: 20.h),
+                SecondaryButton(
+                    title: 'Gallery',
+                    width: 200.w,
+                    onTap: () async {
+                      final XFile? image =
+                          await picker.pickImage(source: ImageSource.gallery);
+                      if (image != null) {
+                        setState(() {
+                          coverImage = File(image.path);
+                        });
+                        Navigator.of(context).pop();
+                        Get.to(() => ProcessScreen(coverImage: coverImage));
+                      } else {
+                        Navigator.of(context).pop();
+                      }
+                    })
+              ],
+            ));
+      },
+    );
+  } // Track the selected index
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +81,7 @@ class _LandingPageState extends State<LandingPage> {
       body: screens[_selectedIndex],
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          print('Scanner Button Pressed');
+          _handleImagePicker(context);
         },
         elevation: 0,
         backgroundColor: Color(0xFF85C556),

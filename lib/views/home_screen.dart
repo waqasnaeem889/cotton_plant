@@ -1,16 +1,32 @@
+import 'dart:io';
+
+import 'package:cotton_plant/controller/auth_controller.dart';
 import 'package:cotton_plant/model/dieases_model..dart';
+import 'package:cotton_plant/services/auth_service.dart';
 import 'package:cotton_plant/views/disease_detail_screen.dart';
+import 'package:cotton_plant/views/process_screen.dart';
+import 'package:cotton_plant/widgets/custom_dialogbox.dart';
+import 'package:cotton_plant/widgets/secondary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
-class HomePageScreen extends StatelessWidget {
+class HomePageScreen extends StatefulWidget {
   const HomePageScreen({super.key});
+
+  @override
+  State<HomePageScreen> createState() => _HomePageScreenState();
+}
+
+class _HomePageScreenState extends State<HomePageScreen> {
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:const  Color.fromRGBO(148, 28, 28, 0),
+        backgroundColor: const Color.fromRGBO(148, 28, 28, 0),
         elevation: 0,
         toolbarHeight: 50,
         leading: IconButton(
@@ -19,18 +35,23 @@ class HomePageScreen extends StatelessWidget {
             width: 300.w,
             height: 180.h,
           ),
-          onPressed: () {
-           
-          },
+          onPressed: () {},
         ),
         actions: [
           IconButton(
-            icon: const  Icon(
+            icon: const Icon(
               Icons.settings,
               color: Colors.black,
             ),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: const Icon(
+              Icons.logout_outlined,
+              color: Colors.black,
+            ),
             onPressed: () {
-            
+              AuthService().signOut();
             },
           ),
         ],
@@ -39,7 +60,7 @@ class HomePageScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding:  EdgeInsets.only(left: 20.h),
+            padding: EdgeInsets.only(left: 20.h),
             child: Text(
               'Hi Dear!',
               style: TextStyle(
@@ -80,7 +101,9 @@ class HomePageScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => DiseaseDetailScreen(disease: diseaseList[index],),
+                          builder: (context) => DiseaseDetailScreen(
+                            disease: diseaseList[index],
+                          ),
                         ),
                       );
                     },
@@ -92,13 +115,14 @@ class HomePageScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Hero(
-                            tag:  diseaseList[index].diseaseName,
+                            tag: diseaseList[index].diseaseName,
                             child: Container(
                               height: 130,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12.0),
                                 image: DecorationImage(
-                                  image: AssetImage( diseaseList[index].diseaseImagePath),
+                                  image: AssetImage(
+                                      diseaseList[index].diseaseImagePath),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -111,7 +135,7 @@ class HomePageScreen extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: Text(
-                                     diseaseList[index].diseaseName,
+                                    diseaseList[index].diseaseName,
                                     style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -119,8 +143,8 @@ class HomePageScreen extends StatelessWidget {
                                   ),
                                 ),
                                 Container(
-                                  padding: const  EdgeInsets.all(4.0),
-                                  decoration: const  BoxDecoration(
+                                  padding: const EdgeInsets.all(4.0),
+                                  decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: Colors.green,
                                   ),
@@ -133,7 +157,6 @@ class HomePageScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                         
                         ],
                       ),
                     ),
