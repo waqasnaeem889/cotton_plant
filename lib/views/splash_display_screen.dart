@@ -1,8 +1,9 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:cotton_plant/utils/contants.dart';
 import 'package:cotton_plant/views/intro_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -20,14 +21,14 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void delay() async {
     await Future.delayed(
-     const  Duration(
+      const Duration(
         milliseconds: 4000,
       ),
       () {
         Navigator.pushAndRemoveUntil(
           context,
           CupertinoPageRoute(
-            builder: (_) => const IntroScreen() ,
+            builder: (_) => const IntroScreen(),
           ),
           (route) => false,
         );

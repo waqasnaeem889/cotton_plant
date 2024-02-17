@@ -1,7 +1,8 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:cotton_plant/controller/auth_controller.dart';
 import 'package:cotton_plant/utils/contants.dart';
 import 'package:cotton_plant/views/auth/auth_wrapper.dart';
-import 'package:cotton_plant/views/landing_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -46,7 +47,7 @@ class _IntroScreenState extends State<IntroScreen> {
                         textAlign: TextAlign.center,
                         style: GoogleFonts.openSans(
                             textStyle: TextStyle(
-                          color: Color.fromARGB(255, 250, 245, 245),
+                          color: const Color.fromARGB(255, 250, 245, 245),
                           fontSize: 24.sp,
                           //fontWeight: FontWeight.bold,
                         )),
@@ -60,7 +61,7 @@ class _IntroScreenState extends State<IntroScreen> {
                         textAlign: TextAlign.center,
                         style: GoogleFonts.openSans(
                           textStyle: TextStyle(
-                            color: Color.fromARGB(255, 98, 240, 150),
+                            color: const Color.fromARGB(255, 98, 240, 150),
                             fontSize: 20.sp,
                             // fontWeight: FontWeight.bold,
                           ),
@@ -84,7 +85,7 @@ class _IntroScreenState extends State<IntroScreen> {
                             );
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Color.fromRGBO(64, 152, 12, 1),
+                            primary: const Color.fromRGBO(64, 152, 12, 1),
                             onPrimary: Colors.white,
                             elevation: 8.0,
                             shape: RoundedRectangleBorder(

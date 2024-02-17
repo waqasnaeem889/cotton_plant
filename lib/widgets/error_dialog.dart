@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -19,7 +21,8 @@ class ErrorDialog extends StatelessWidget {
               style: GoogleFonts.poppins(fontSize: 16.sp, color: Colors.red))),
       content: Text(message,
           textAlign: TextAlign.center,
-          style: GoogleFonts.poppins(fontSize: 16.sp, color: themeColor.tertiary)),
+          style:
+              GoogleFonts.poppins(fontSize: 16.sp, color: themeColor.tertiary)),
       actions: <Widget>[
         showOkButton
             ? TextButton(
@@ -27,7 +30,7 @@ class ErrorDialog extends StatelessWidget {
                   Get.back();
                 },
                 child: Text('Ok',
-                    style:  GoogleFonts.poppins(
+                    style: GoogleFonts.poppins(
                       fontSize: 16.sp,
                       color: themeColor.tertiary,
                     )))

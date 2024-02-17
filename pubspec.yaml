@@ -23,6 +23,8 @@ dependencies:
   fluttertoast: ^8.2.4
   permission_handler: ^11.0.1
   image_picker: ^1.0.4
+  firebase_storage: ^11.6.5
+  http: ^1.2.0
 
 
 dev_dependencies:

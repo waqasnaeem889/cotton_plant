@@ -21,10 +21,10 @@ class CustomDialogBox extends StatelessWidget {
         title: Text(
           title,
           style: TextStyle(
-                fontSize: 17.sp,
-                fontWeight: FontWeight.w900,
-                color: CustomColors.primary,
-              ),
+            fontSize: 17.sp,
+            fontWeight: FontWeight.w900,
+            color: CustomColors.primary,
+          ),
           textAlign: TextAlign.center,
         ),
         content: Container(
@@ -32,13 +32,15 @@ class CustomDialogBox extends StatelessWidget {
           decoration: const BoxDecoration(shape: BoxShape.rectangle),
           child: Column(
             children: [
-              Text(description,
-                  textAlign: TextAlign.center,
-                  style:  TextStyle(
-                fontSize: 12.sp,
-                fontWeight: FontWeight.w900,
-                color: CustomColors.tertiary,
-              ),),
+              Text(
+                description,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w900,
+                  color: CustomColors.tertiary,
+                ),
+              ),
               SizedBox(height: Get.height * 0.03),
               action
             ],

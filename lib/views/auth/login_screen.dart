@@ -3,7 +3,6 @@ import 'package:cotton_plant/utils/contants.dart';
 import 'package:cotton_plant/views/auth/signup_screen.dart';
 import 'package:cotton_plant/widgets/auth_text_field.dart';
 import 'package:cotton_plant/widgets/custom_button.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

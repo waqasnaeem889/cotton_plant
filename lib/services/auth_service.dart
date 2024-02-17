@@ -7,7 +7,6 @@ import 'package:cotton_plant/services/database_service.dart';
 import 'package:cotton_plant/widgets/error_dialog.dart';
 import 'package:cotton_plant/widgets/loading_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 class AuthService {

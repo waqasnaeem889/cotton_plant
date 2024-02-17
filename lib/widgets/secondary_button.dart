@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-
 class SecondaryButton extends StatelessWidget {
   final double? width;
   final Color? textColor;
@@ -37,11 +36,11 @@ class SecondaryButton extends StatelessWidget {
           onPressed: onTap,
           child: Text(
             title,
-            style:  TextStyle(
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w900,
-                color: Colors.white,
-              ),
+            style: TextStyle(
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w900,
+              color: Colors.white,
+            ),
           )),
     );
   }

@@ -1,8 +1,8 @@
+// ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 
 // ignore: must_be_immutable
 class CustomTextField extends StatefulWidget {
@@ -17,7 +17,7 @@ class CustomTextField extends StatefulWidget {
   final VoidCallback? onTap;
   String? Function(String?)? validator;
 
-   CustomTextField({
+  CustomTextField({
     Key? key,
     required this.controller,
     required this.hintText,
@@ -51,7 +51,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   Widget build(BuildContext context) {
-   
     return TextFormField(
       validator: widget.validator,
       onTap: widget.onTap,
@@ -65,9 +64,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
         fontStyle: FontStyle.normal,
       ),
       decoration: InputDecoration(
-      errorStyle:  TextStyle(fontSize: 12.sp),
+        errorStyle: TextStyle(fontSize: 12.sp),
         filled: true,
-        fillColor: Color(0x26AAAAAA),
+        fillColor: const Color(0x26AAAAAA),
         prefixIcon: widget.leftIcon?.color == null
             ? widget.leftIcon
             : Icon(widget.leftIcon?.icon, color: Colors.grey),
@@ -89,15 +88,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide:BorderSide(
+          borderSide: BorderSide(
             color: Colors.red,
             width: 3.w,
           ),
         ),
-        contentPadding:
-          EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
+        contentPadding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
         hintText: widget.hintText,
-        hintStyle:  TextStyle(fontSize: 18.sp, color: Colors.grey),
+        hintStyle: TextStyle(fontSize: 18.sp, color: Colors.grey),
         errorText: widget.errorText,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.r),

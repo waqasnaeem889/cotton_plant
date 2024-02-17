@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cotton_plant/controller/auth_controller.dart';
 import 'package:cotton_plant/model/user_model.dart';

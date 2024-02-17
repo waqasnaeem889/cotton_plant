@@ -1,16 +1,8 @@
-import 'dart:io';
-
-import 'package:cotton_plant/controller/auth_controller.dart';
 import 'package:cotton_plant/model/dieases_model..dart';
 import 'package:cotton_plant/services/auth_service.dart';
 import 'package:cotton_plant/views/disease_detail_screen.dart';
-import 'package:cotton_plant/views/process_screen.dart';
-import 'package:cotton_plant/widgets/custom_dialogbox.dart';
-import 'package:cotton_plant/widgets/secondary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 
 class HomePageScreen extends StatefulWidget {
   const HomePageScreen({super.key});
@@ -20,8 +12,6 @@ class HomePageScreen extends StatefulWidget {
 }
 
 class _HomePageScreenState extends State<HomePageScreen> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +56,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
               style: TextStyle(
                 fontSize: 17.sp,
                 fontWeight: FontWeight.w900,
-                color: Color.fromRGBO(126, 123, 123, 1),
+                color: const Color.fromRGBO(126, 123, 123, 1),
               ),
             ),
           ),

@@ -5,7 +5,6 @@ import 'package:cotton_plant/widgets/auth_text_field.dart';
 import 'package:cotton_plant/widgets/custom_button.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -38,7 +37,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -66,7 +64,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   Text(
                     'Join our community and start your journey',
                     style: GoogleFonts.poppins(
-                        fontSize: 14.sp, color:CustomColors.primary),
+                        fontSize: 14.sp, color: CustomColors.primary),
                   ),
                   SizedBox(
                     height: 20.h,

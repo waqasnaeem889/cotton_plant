@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api, use_build_context_synchronously
+
 import 'dart:io';
 
 import 'package:cotton_plant/views/home_screen.dart';
@@ -19,7 +21,7 @@ class _LandingPageState extends State<LandingPage> {
   int _selectedIndex = 0;
 
   List<Widget> screens = [
-    HomePageScreen(),
+    const HomePageScreen(),
     AboutScreen(),
   ];
 
@@ -84,9 +86,9 @@ class _LandingPageState extends State<LandingPage> {
           _handleImagePicker(context);
         },
         elevation: 0,
-        backgroundColor: Color(0xFF85C556),
+        backgroundColor: const Color(0xFF85C556),
         child: ClipOval(
-          child: Container(
+          child: SizedBox(
             width: 30.w,
             height: 35.h,
             child: Image.asset(
@@ -98,8 +100,8 @@ class _LandingPageState extends State<LandingPage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        child: Container(
+        shape: const CircularNotchedRectangle(),
+        child: SizedBox(
           height: 56.h,
           child: Row(
             mainAxisSize: MainAxisSize.max,
@@ -130,7 +132,6 @@ class _LandingPageState extends State<LandingPage> {
             color: _selectedIndex == index ? Colors.green : Colors.grey,
           ),
           onPressed: () {
-            print('Button $index Pressed');
             setState(() {
               _selectedIndex = index;
             });
