@@ -1,7 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:cotton_plant/controller/auth_controller.dart';
-import 'package:cotton_plant/utils/contants.dart';
 import 'package:cotton_plant/views/auth/auth_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,6 +21,7 @@ class _IntroScreenState extends State<IntroScreen> {
 
   @override
   Widget build(BuildContext context) {
+     ColorScheme themeColor = Theme.of(context).colorScheme;
     _initializeControllers(context);
     return SafeArea(
       child: Scaffold(
@@ -36,7 +36,7 @@ class _IntroScreenState extends State<IntroScreen> {
             ),
             Expanded(
               child: Container(
-                color: CustomColors.primary,
+                color: themeColor.primary,
                 child: Column(
                   children: [
                     SizedBox(height: 30.h),

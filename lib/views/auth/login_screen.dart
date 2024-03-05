@@ -1,5 +1,4 @@
 import 'package:cotton_plant/services/auth_service.dart';
-import 'package:cotton_plant/utils/contants.dart';
 import 'package:cotton_plant/views/auth/signup_screen.dart';
 import 'package:cotton_plant/widgets/auth_text_field.dart';
 import 'package:cotton_plant/widgets/custom_button.dart';
@@ -35,6 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+     ColorScheme themeColor = Theme.of(context).colorScheme;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Text(
                     'Sign In to Your Account',
                     style: GoogleFonts.poppins(
-                      color: CustomColors.primary,
+                      color: themeColor.primary,
                       fontWeight: FontWeight.bold,
                       fontStyle: FontStyle.normal,
                       fontSize: 28.sp,
@@ -62,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Text(
                     'Welcome back you\'ve been missed',
                     style: GoogleFonts.poppins(
-                        fontSize: 14.sp, color: CustomColors.primary),
+                        fontSize: 14.sp, color: themeColor.primary),
                   ),
                   SizedBox(
                     height: 25.h,
@@ -139,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Text(
                         "Don't have account?",
                         style: GoogleFonts.poppins(
-                            fontSize: 14.sp, color: CustomColors.tertiary),
+                            fontSize: 14.sp, color: themeColor.tertiary),
                       ),
                       TextButton(
                         onPressed: () {
@@ -148,7 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Text(
                           "Sign Up",
                           style: GoogleFonts.poppins(
-                              fontSize: 14.sp, color: CustomColors.primary),
+                              fontSize: 14.sp, color: themeColor.primary),
                         ),
                       )
                     ],

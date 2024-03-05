@@ -17,6 +17,7 @@ class CustomDialogBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     ColorScheme themeColor = Theme.of(context).colorScheme;
     return AlertDialog(
         title: Text(
           title,
@@ -38,7 +39,7 @@ class CustomDialogBox extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w900,
-                  color: CustomColors.tertiary,
+                  color: themeColor.surface,
                 ),
               ),
               SizedBox(height: Get.height * 0.03),

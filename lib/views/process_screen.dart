@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:cotton_plant/controller/disease_controller.dart';
 import 'package:cotton_plant/services/firebase_storage_service.dart';
-import 'package:cotton_plant/utils/contants.dart';
 import 'package:cotton_plant/widgets/custom_button.dart';
 import 'package:cotton_plant/widgets/loading_dialog.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +19,7 @@ class ProcessScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     ColorScheme themeColor = Theme.of(context).colorScheme;
     return GetBuilder<DiseaseController>(
         init: DiseaseController(),
         builder: (dc) {
@@ -45,7 +45,7 @@ class ProcessScreen extends StatelessWidget {
                       padding: EdgeInsets.all(5.h),
                       decoration: BoxDecoration(
                           border:
-                              Border.all(color: CustomColors.primary, width: 2),
+                              Border.all(color: themeColor.primary, width: 2),
                           borderRadius: BorderRadius.circular(8.r)),
                       width: Get.width,
                       height: 200.h,

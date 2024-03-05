@@ -26,9 +26,9 @@ class AuthService {
     } on TimeoutException {
       hideLoadingDialog();
       showErrorDialog("Request Timed out");
-    } on Exception catch (err) {
+    } on FirebaseAuthException catch (err) {
       hideLoadingDialog();
-      showErrorDialog(err.toString());
+      showErrorDialog(err.message.toString());
     }
   }
 
@@ -57,7 +57,7 @@ class AuthService {
       hideLoadingDialog();
     } on FirebaseAuthException catch (e) {
       hideLoadingDialog();
-      showErrorDialog(e.toString());
+      showErrorDialog(e.message.toString());
       return;
     }
   }

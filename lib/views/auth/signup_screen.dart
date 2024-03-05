@@ -1,5 +1,4 @@
 import 'package:cotton_plant/services/auth_service.dart';
-import 'package:cotton_plant/utils/contants.dart';
 import 'package:cotton_plant/views/auth/login_screen.dart';
 import 'package:cotton_plant/widgets/auth_text_field.dart';
 import 'package:cotton_plant/widgets/custom_button.dart';
@@ -37,6 +36,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
+     ColorScheme themeColor = Theme.of(context).colorScheme;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -55,7 +55,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       fontWeight: FontWeight.bold,
                       fontStyle: FontStyle.normal,
                       fontSize: 28.sp,
-                      color: CustomColors.primary,
+                      color: themeColor.primary,
                     ),
                   ),
                   SizedBox(
@@ -64,7 +64,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   Text(
                     'Join our community and start your journey',
                     style: GoogleFonts.poppins(
-                        fontSize: 14.sp, color: CustomColors.primary),
+                        fontSize: 14.sp, color: themeColor.primary),
                   ),
                   SizedBox(
                     height: 20.h,
@@ -138,13 +138,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       text: 'Already have an account?',
                       style: GoogleFonts.poppins(
                         fontSize: 16.sp,
-                        color: CustomColors.tertiary,
+                        color: themeColor.tertiary,
                       ),
                       children: [
                         TextSpan(
                           text: ' Login',
                           style: TextStyle(
-                            color: CustomColors.primary,
+                            color: themeColor.primary,
                             fontWeight: FontWeight.w400,
                             fontSize: 16.sp,
                           ),

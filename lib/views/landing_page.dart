@@ -2,9 +2,10 @@
 
 import 'dart:io';
 
+import 'package:cotton_plant/controller/cotton_tips_controller.dart';
 import 'package:cotton_plant/views/home_screen.dart';
-import 'package:cotton_plant/views/about_screen.dart';
 import 'package:cotton_plant/views/process_screen.dart';
+import 'package:cotton_plant/views/setting_screen.dart';
 import 'package:cotton_plant/widgets/custom_dialogbox.dart';
 import 'package:cotton_plant/widgets/secondary_button.dart';
 import 'package:flutter/material.dart';
@@ -22,13 +23,14 @@ class _LandingPageState extends State<LandingPage> {
 
   List<Widget> screens = [
     const HomePageScreen(),
-    AboutScreen(),
+    SettingScreen(),
   ];
 
   final ImagePicker picker = ImagePicker();
   File? coverImage;
 
   Future<dynamic> _handleImagePicker(BuildContext context) {
+    
     return showDialog(
       context: context,
       builder: (context) {
@@ -79,45 +81,52 @@ class _LandingPageState extends State<LandingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: screens[_selectedIndex],
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _handleImagePicker(context);
-        },
-        elevation: 0,
-        backgroundColor: const Color(0xFF85C556),
-        child: ClipOval(
-          child: SizedBox(
-            width: 30.w,
-            height: 35.h,
-            child: Image.asset(
-              "assets/images/scan.png",
-              fit: BoxFit.cover,
+     ColorScheme themeColor = Theme.of(context).colorScheme;
+    return GetBuilder<CottonTipsController>(
+      init: CottonTipsController(),
+      builder: (ct) {
+        return Scaffold(
+          body: screens[_selectedIndex],
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              _handleImagePicker(context);
+            },
+            elevation: 0,
+            backgroundColor: const Color(0xFF85C556),
+            child: ClipOval(
+              child: SizedBox(
+                width: 30.w,
+                height: 35.h,
+                child: Image.asset(
+                  "assets/images/scan.png",
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        child: SizedBox(
-          height: 56.h,
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              _buildIconButton(0, Icons.home),
-              //_buildIconButton(1, Icons.search),
-              SizedBox(width: 32.w),
-              _buildIconButton(1, Icons.info,
-                  iconSize:
-                      24.h), // Use your custom information icon image here
-              //_buildIconButton(3, Icons.person_outlined),
-            ],
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+          bottomNavigationBar: BottomAppBar(
+            color: themeColor.background,
+            shape: const CircularNotchedRectangle(),
+            child: SizedBox(
+              height: 56.h,
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  _buildIconButton(0, Icons.home),
+                  //_buildIconButton(1, Icons.search),
+                  SizedBox(width: 32.w),
+                  _buildIconButton(1, Icons.info,
+                      iconSize:
+                          24.h), // Use your custom information icon image here
+                  //_buildIconButton(3, Icons.person_outlined),
+                ],
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      }
     );
   }
 
