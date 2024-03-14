@@ -12,7 +12,6 @@ class AboutScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
           backgroundColor: CustomColors.primary,
-        
           body: SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 30.w, horizontal: 15.h),
@@ -23,6 +22,11 @@ class AboutScreen extends StatelessWidget {
                     child: IconButton(onPressed: (){
                       Get.back();
                     }, icon:const Icon(Icons.arrow_back_ios))),
+                Image.asset("assets/images/launcher.png",
+                height: 150.h,
+                width: 150.w,
+                fit: BoxFit.contain,
+                ),
                   const DetailContainer(
                       title: 'About',
                       details:

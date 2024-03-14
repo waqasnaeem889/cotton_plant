@@ -2,7 +2,10 @@
 import 'dart:io';
 
 import 'package:cotton_plant/controller/disease_controller.dart';
+import 'package:cotton_plant/model/dieases_model..dart';
 import 'package:cotton_plant/services/firebase_storage_service.dart';
+import 'package:cotton_plant/utils/contants.dart';
+import 'package:cotton_plant/views/disease_detail_screen.dart';
 import 'package:cotton_plant/widgets/custom_button.dart';
 import 'package:cotton_plant/widgets/loading_dialog.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +22,7 @@ class ProcessScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     ColorScheme themeColor = Theme.of(context).colorScheme;
+    ColorScheme themeColor = Theme.of(context).colorScheme;
     return GetBuilder<DiseaseController>(
         init: DiseaseController(),
         builder: (dc) {
@@ -55,7 +58,7 @@ class ProcessScreen extends StatelessWidget {
                   SizedBox(
                     height: 20.h,
                   ),
-                  dc.disease.isEmpty
+                  dc.disease.id.isEmpty
                       ? CustomButton(
                           onPressed: () async {
                             String url = '';
@@ -75,37 +78,60 @@ class ProcessScreen extends StatelessWidget {
                             }
                           },
                           text: 'Check Disease')
-                      : Column(
-                          children: [
-                            dc.disease != 'Disease Not Found!'
-                                ? Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                        Text(
-                                          'Disease Name is:  ',
-                                          style: TextStyle(fontSize: 16.sp),
-                                        ),
-                                        Text(
-                                          dc.disease,
-                                          style: TextStyle(
-                                              fontSize: 18.sp,
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      ])
-                                : Text(
-                                    'Disease Not Found!',
-                                    style: TextStyle(fontSize: 16.sp),
-                                  ),
-                            SizedBox(
-                              height: 20.h,
+                      : Column(children: [
+                          dc.disease != 'Disease Not Found!'
+                              ? dc.disease.id  == '3'?  Text(
+                                       'No disease found !. Its a ${dc.disease.name}',
+                                       textAlign: TextAlign.center,
+                                        style: TextStyle(fontSize: 16.sp),
+                                      ): Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                      Text(
+                                        'Disease Name is:  ',
+                                        style: TextStyle(fontSize: 16.sp),
+                                      ),
+                                      Text(
+                                        dc.disease.name,
+                                        style: TextStyle(
+                                            fontSize: 18.sp,
+                                            fontWeight: FontWeight.bold),
+                                      )
+                                    ])
+                              : Text(
+                                  'Disease Not Found!',
+                                  style: TextStyle(fontSize: 16.sp),
+                                ),
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                          dc.disease.id == '3' ? const  SizedBox(): CustomButton(
+                              text: 'Learn More',
+                              onPressed: () {
+                                Get.to(() => DiseaseDetailScreen(
+                                    disease: dc.disease.id == '0'
+                                        ? aphids
+                                        : dc.disease.id == '1'
+                                            ? armyWorm
+                                            : dc.disease.id == '2'
+                                                ? bacterialBlight
+                                                : dc.disease.id == '4'
+                                                    ? powderyMidew
+                                                    : targetSpot));
+                              }),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 30.w),
+                            child: const Divider(
+                              color: CustomColors.primary,
                             ),
-                            CustomButton(
-                                text: 'Retry ',
-                                onPressed: () {
-                                  Get.back();
-                                })
-                          ],
-                        )
+                          ),
+                          CustomButton(
+                            text: 'Retry ',
+                            onPressed: () {
+                              Get.back();
+                            },
+                          )
+                        ])
                 ],
               ));
         });

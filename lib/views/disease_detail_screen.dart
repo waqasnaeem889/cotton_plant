@@ -5,6 +5,7 @@ import 'package:cotton_plant/widgets/divider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DiseaseDetailScreen extends StatelessWidget {
@@ -21,7 +22,7 @@ class DiseaseDetailScreen extends StatelessWidget {
             CupertinoIcons.back,
           ),
           onPressed: () {
-            Navigator.pop(context);
+           Get.close(2);
           },
         ),
         title: Text(
