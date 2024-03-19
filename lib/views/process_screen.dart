@@ -109,6 +109,7 @@ class ProcessScreen extends StatelessWidget {
                               text: 'Learn More',
                               onPressed: () {
                                 Get.to(() => DiseaseDetailScreen(
+                                  image: coverImage!,
                                     disease: dc.disease.id == '0'
                                         ? aphids
                                         : dc.disease.id == '1'

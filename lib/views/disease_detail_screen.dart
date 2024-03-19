@@ -1,16 +1,25 @@
-import 'package:cotton_plant/model/dieases_model..dart';
-import 'package:cotton_plant/utils/contants.dart';
-import 'package:cotton_plant/widgets/detail_container.dart';
-import 'package:cotton_plant/widgets/divider.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:cotton_plant/model/dieases_model..dart';
+import 'package:cotton_plant/utils/contants.dart';
+import 'package:cotton_plant/widgets/detail_container.dart';
+import 'package:cotton_plant/widgets/divider.dart';
+
 class DiseaseDetailScreen extends StatelessWidget {
   final DiseaseModel disease;
-  const DiseaseDetailScreen({super.key, required this.disease});
+  final File image;
+  const DiseaseDetailScreen({
+    Key? key,
+    required this.disease,
+    required this.image,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -58,11 +67,8 @@ class DiseaseDetailScreen extends StatelessWidget {
                     ),
                   ],
                   borderRadius: BorderRadius.circular(12.0),
-                  image: DecorationImage(
-                    image: AssetImage(disease.diseaseImagePath),
-                    fit: BoxFit.cover,
-                  ),
                 ),
+                child: Image.file(image),
               ),
             ),
             SizedBox(
