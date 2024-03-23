@@ -80,7 +80,12 @@ class ProcessScreen extends StatelessWidget {
                           text: 'Check Disease')
                       : Column(children: [
                           dc.disease != 'Disease Not Found!'
-                              ? dc.disease.id  == '3'?  Text(
+                           ? dc.disease.id  == '6'?  Text(
+                                       '${dc.disease.name} Disease',
+                                       textAlign: TextAlign.center,
+                                        style: TextStyle(fontSize: 16.sp),
+                                      ):
+                               dc.disease.id  == '3'?  Text(
                                        'No disease found !. Its a ${dc.disease.name}',
                                        textAlign: TextAlign.center,
                                         style: TextStyle(fontSize: 16.sp),
@@ -105,7 +110,7 @@ class ProcessScreen extends StatelessWidget {
                           SizedBox(
                             height: 20.h,
                           ),
-                          dc.disease.id == '3' ? const  SizedBox(): CustomButton(
+                          dc.disease.id == '6' ? const  SizedBox(): dc.disease.id == '3' ? const  SizedBox(): CustomButton(
                               text: 'Learn More',
                               onPressed: () {
                                 Get.to(() => DiseaseDetailScreen(
